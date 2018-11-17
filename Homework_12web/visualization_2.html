@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cloud Page</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">The Relationship of Latitude and Cloud Cover</h1>
+        </div>
+
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled " href="landing_page4.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="comparison.html">Comparisons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="visualization_1.html">Temparature</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="visualization_2.html">Cloud Cover</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="visualization_3.html">Humidity</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="visualization_4.html">Windiness</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="data.html">Trial Data</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>        
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="lat_cloud.png" style="width:488px;height:338px;">
+            </div>
+        
+            <div class="col-lg-6">
+                The readout of this information shows 8 distinct trendlines.  This seems unlikely, as one 
+                would expect that there aren’t just specific points of latitude with lines of clouds.  But 
+                upon further examination, this is a consequence of how cloud cover is most commonly 
+                calculated.  Cloud cover is calculated, often using “Okta’s”.  <from wikipedia> “In meteorology, an okta is a 
+                unit of measurement used to describe the amount of cloud cover at any given location 
+                such as a weather station. Sky conditions are estimated in terms of how many eighths 
+                of the sky are covered in cloud, ranging from 0 oktas (completely clear sky) through to 
+                8 oktas (completely overcast). In addition, in the SYNOP code there is an extra cloud 
+                cover indicator '9' indicating that the sky is totally obscured (i.e. hidden from view), 
+                usually due to dense fog or heavy snow.”  This would explain the distinct trendlines.
+            </div>       
+        </div>
+    </div>
+</body>
+</html>
