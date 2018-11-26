@@ -19,18 +19,18 @@
             </div>
         </div>
     </div>
-    <!-- This is where the most recent tweet is going to be placed - this is placeholder for now -->
+    <!-- This is where the first scrape item goes -->
     <div class="container">
         <div class="row">
             <h4>Latest Mars News</h4>
         </div>
-
+        <!-- the "stripped title" goes here -->
         <div class="row">
-            <h6>NASA's Next Mars Mission to Investigate Interior of Red Planet</h6>
+            <h6>{{ strippedTitle }}.</h6>
         </div>
-
+        <!-- the "strippedPar" goes here -->
         <div class="row">
-            <p>akdfajd akdfdsk d ads fid ad f adsd ldklkdf ad f dhfja ;d fa dsd ;a d ddakdkd ad dfkldkf d fad;dklkd adf daskdklf da ldkd df df d dsaf dsjfdj dsad d kdkf adkjdbjds </p>
+            <p>{{ strippedPar }}.</p>
         </div>
     </div>
     <!-- This is where I will put in the next row, containing two columns, with two rows each (header, Large image) and (weather, mars facts table) -->
@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="row">       <!-- This is where the Mars Featured Image will get linked in-->
-                            <img src="Mars_Featured_Image_Placeholder.png" style="width:234px;height:162px;"> 
+                            <img src="featured_image_url" style="width:234px;height:162px;"> 
                     </div>
                 </div>  
 
