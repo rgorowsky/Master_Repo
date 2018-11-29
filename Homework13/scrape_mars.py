@@ -25,8 +25,8 @@ def init_browser():
 
 
 # set up the splinter method
-    executable_path = {'executable_path': 'chromedriver.exe'}
-    browser = Browser('chrome', **executable_path, headless=False)
+    executable_path = {'executable_path': r'C:\Users\rgoro\Documents\robby school\Master_Repo\Homework13\chromedriver.exe'}
+    return Browser('chrome', **executable_path, headless=False)
 
 ### define the scrape method below:
 def scrape():
@@ -63,18 +63,19 @@ def scrape():
 
 
     # use get_text() to only get the needed text
-    strippedTitle = titlePortion.get_text()
+    mars_scrape_objects["strippedTitle"] = titlePortion.get_text()
     # strippedTitle
     #put it to the mars_scrape_objects dictionary
-    mars_scrape_objects["strippedTitle"] = strippedTitle
+
+    # mars_scrape_objects["strippedTitle"] = strippedTitle
     ##### this is where I need to put in an entry to a Mongo database.
 
     # In[8]:
 
 
     # use get_text() to only get the needed text
-    strippedPar = parPortion.get_text()
-    strippedPar
+    # strippedPar = parPortion.get_text()
+    mars_scrape_objects["strippedPar"] = parPortion.get_text()
 
 
     # In[9]:
@@ -105,7 +106,7 @@ def scrape():
 
 
     # I'm having trouble isolating the part I want, need to know the elements
-    type(cutImage)
+    # type(cutImage)
 
 
     # In[12]:
@@ -261,7 +262,7 @@ def scrape():
         hemisphere['title'] = browser.find_by_css('h2.title').text
         listOfLinks.append(hemisphere)
         
-    print(listOfLinks)
+    # print(listOfLinks)
 
 
 # In[ ]:
@@ -272,6 +273,6 @@ def scrape():
 
 # In[ ]:
 
-
-
+    browser.quit()
+    return mars_scrape_objects
 

@@ -11,19 +11,19 @@ mongo = PyMongo(app)
 @app.route("/")
 def index():
     # listings = mongo.db.listings.find_one()
-    titleResult = mongo.db.scrape_data.find_one()
-    strippedTitle = titleResult["strippedTitle"]
-    return render_template("index.html")
+    mars_scrape_objects = mongo.db.mars_scrape_objects.find_one()
+    # strippedTitle = titleResult["strippedTitle"]
+    return render_template("index.html", mars_scrape_objects = mars_scrape_objects)
     
 
 @app.route("/scrape_mars")
 def scrape():
-    scrape_db = mongo.db.scrape_data
-    scrape_data = scrape_mars.scrape()
-    strippedTitle = "strippedTitle"
-    scrape_db.update(
+    scrape_data = mongo.db.mars_scrape_objects
+    mars_scrape_objects = scrape_mars.scrape()
+    # strippedTitle = "strippedTitle"
+    scrape_data.update(
         {},
-        scrape_data,
+        mars_scrape_objects,
         upsert=True
     )
     return redirect("http://localhost:5000/", code=302)
