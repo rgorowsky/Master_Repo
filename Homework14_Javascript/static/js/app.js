@@ -1,15 +1,11 @@
-// from data.js
+// D3 selector
 var tbody = d3.select("tbody");
+var submit = d3.select("#filterButton");
 
-// Let's just see if we can display the table
-// var html = "<table border='1|1'>";          // new section
-// for (var i = 0; i < rows.length; i++) {     // new section
-//   html+="<tr>";                             // new section
-//   html+="<td>"+data[i].datetime+"</td>";    // new section
-// }
-
-function onStart() {
-  data.forEach((toBeDefined) => {
+// Update table with a new dataset
+function updateTable(dataset) {
+  tbody.html('');
+  dataset.forEach((toBeDefined) => {
     var row = tbody.append("tr");
     Object.entries(toBeDefined).forEach(([key,value]) => {
       var cell = tbody.append("td");
@@ -17,13 +13,20 @@ function onStart() {
     });
   });
 }
-onStart();
 
-function filterButton() {
-  data.sort(function(a,b){
-    // Turn your strings into dates, and then subtract them
-    // to get a value that is either negative, positive, or zero.
-    return new Date(b.date) - new Date(a.date);
-  });
+// Filter date function (just compare a string)
+function filterByDate(dataset) {
+    var filteredData = dataset.filter(function (d) {
+      return d.datetime === $('#datetime').val();
+    });
+    return filteredData;
 }
-filterButton();
+
+// First update table of original data
+updateTable(data); 
+submit.on("click", function() {
+  // When filter is click
+  // Filter data by datetime and update the table
+  var result = filterByDate(data);
+  updateTable(result);
+});
