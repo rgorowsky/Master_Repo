@@ -1,8 +1,17 @@
-function buildMetadata(sample) {
+// test = d3.json( `/metadata/${940}`).then((data) => {
+
+// })
+// console.log(test);
+
+// function buildMetadata(sample) {
 
   // @TODO: Complete the following function that builds the metadata panel
 
   // Use `d3.json` to fetch the metadata for a sample
+  // d3.json( `/metadata/${sample}`).then((data) => {
+
+  // })
+  // console.log(940);
     // Use d3 to select the panel with id of `#sample-metadata`
 
     // Use `.html("") to clear any existing metadata
@@ -13,7 +22,7 @@ function buildMetadata(sample) {
 
     // BONUS: Build the Gauge Chart
     // buildGauge(data.WFREQ);
-}
+// }
 
 function buildCharts(sample) {
 
@@ -46,10 +55,34 @@ function init() {
   });
 }
 
+function getData(sample, callback) {
+  // Use a request to grab the json data needed for all charts          //THIS IS THE CODE THAT ABE SLACKED ME
+  Plotly.d3.json(`/samples/${sample}`, function(error, sampleData) 
+    
+  { return console.log(samples);
+      if (error) return console.warn(error);
+
+      Plotly.d3.json('/otu', function(error, otuData) {                 //THIS IS THE CODE THAT ABE SLACKED ME
+          if (error) return console.warn(error);
+          callback(sampleData, otuData);
+      });
+  });                                                                   //THIS IS THE CODE THAT ABE SLACKED ME
+
+  Plotly.d3.json(`/metadata/${sample}`, function(error, metaData) {
+      if (error) return console.warn(error);
+
+      updateMetaData(metaData);                                         //THIS IS THE CODE THAT ABE SLACKED ME
+  })
+
+  // BONUS - Build the Gauge Chart
+  buildGauge(sample);
+}                                                                       //THIS IS THE CODE THAT ABE SLACKED ME
+
 function optionChanged(newSample) {
   // Fetch new data each time a new sample is selected
   buildCharts(newSample);
   buildMetadata(newSample);
+  
 }
 
 // Initialize the dashboard

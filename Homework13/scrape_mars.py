@@ -57,65 +57,43 @@ def scrape():
     # select the "paragraph" portion
     parPortion = soup.find('div', class_='article_teaser_body')
     parPortion
-
-
     # In[7]:
-
-
     # use get_text() to only get the needed text
     mars_scrape_objects["strippedTitle"] = titlePortion.get_text()
     # strippedTitle
     #put it to the mars_scrape_objects dictionary
-
     # mars_scrape_objects["strippedTitle"] = strippedTitle
     ##### this is where I need to put in an entry to a Mongo database.
-
     # In[8]:
-
-
     # use get_text() to only get the needed text
     # strippedPar = parPortion.get_text()
     mars_scrape_objects["strippedPar"] = parPortion.get_text()
-
-
     # In[9]:
-
-
     # Use splinter to navigate the site and find the image url for the current Featured Mars Image and... 
     # assign the url string to a variable called featured_image_url
-
     # define the target URL
     url2 = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
+    baseURL = 'https://www.jpl.nasa.gov'
     browser.visit(url2)
 
     # redefine html and soup
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
-
-
     # In[10]:
-
-
     # search code for image tags
     image = soup.find('article', class_="carousel_item")
     cutImage = image['style']
     cutImage
+    
+    featured_image = cutImage.split("url")[1]
+    # featured_image_url = url + featured_image    REMOVING THIS PART - BECAUSE I DON'T WANT MY "URL +" PART HERE
 
+    removeOne_featured_image_url =featured_image.replace("('", "").strip()
+    final_featured_image_url = removeOne_featured_image_url.replace("')", "").strip()
+    # final_final_image_url = final_featured_image_url.replace(";", "").strip() I PUT THIS AS RIGHT SIDE OF DIC OBJECT
 
-    # In[11]:
-
-
-    # I'm having trouble isolating the part I want, need to know the elements
-    # type(cutImage)
-
-
-    # In[12]:
-
-
-    # try and get only the URL
-    featured_image_url = cutImage.split("url")[1]
-    featured_image_url
-
+    # testSomething
+    mars_scrape_objects["final_final_image_url"] = baseURL + final_featured_image_url.replace(";", "").strip()
 
     # In[13]:
 
