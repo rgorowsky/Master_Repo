@@ -96,8 +96,6 @@ def scrape():
     mars_scrape_objects["final_final_image_url"] = baseURL + final_featured_image_url.replace(";", "").strip()
 
     # In[13]:
-
-
     # Visit the Mars Weather twitter account here and scrape the latest 
     # Mars weather tweet from the page. Save the tweet text for the weather 
     # report as a variable called mars_weather.
@@ -110,22 +108,15 @@ def scrape():
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
 
-
     # In[14]:
-
-
     # scrape the latest tweet
     tweet = soup.find('div', class_='js-tweet-text-container')
     tweet
 
-
     # In[15]:
-
-
     # report as a variable called mars_weather.
-    mars_weather = tweet.find('p').text
-    mars_weather
-
+    # mars_weather = tweet.find('p').text
+    mars_scrape_objects["mars_weather"] = tweet.find('p').text
 
     # In[16]:
 
@@ -241,13 +232,21 @@ def scrape():
         listOfLinks.append(hemisphere)
         
     # print(listOfLinks)
-
+    hemisphere1_dirty = listOfLinks[0]
+    # hemisphere1_dirty
 
 # In[ ]:
+    # hemisphere1 = hemisphere1_dirty.pop("image_url", None)
+    mars_scrape_objects["hemisphere1"] = hemisphere1_dirty.pop("image_url", None)
 
+    hemisphere2_dirty = listOfLinks[1]    
+    mars_scrape_objects["hemisphere2"] = hemisphere2_dirty.pop("image_url", None)
 
+    hemisphere3_dirty = listOfLinks[2]    
+    mars_scrape_objects["hemisphere3"] = hemisphere3_dirty.pop("image_url", None)
 
-
+    hemisphere4_dirty = listOfLinks[3]    
+    mars_scrape_objects["hemisphere4"] = hemisphere4_dirty.pop("image_url", None)
 
 # In[ ]:
 

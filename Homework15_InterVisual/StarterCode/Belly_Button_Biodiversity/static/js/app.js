@@ -1,31 +1,37 @@
-function buildMetadata(data) {
+
+
+function buildMetadata(newSample) {
 
   // @TODO: Complete the following function that builds the metadata panel
 
-  // Use `d3.json` to fetch the metadata for a sample
-    // Use d3 to select the panel with id of `#sample-metadata`
-  // var sample = d3.json(`/metadata/${sample}`)
-  // console.log(sampleData, "this is where the data is");  // copied and commented out my part
-
-  // bringing over the section about pulling the sample from the
-  // metadata, based on what is in the dropdown selector
-
-  var panel = d3.json(`/metadata/${sample}`)
-    // console.log(sample, "this is where the data is");
-
-  // var sampleData = d3.json(`/metadata/${sample}`).then(sampleData)  this is what I saw on Kelly's machine
-  // console.log(sampleData, "this is where the data is");
+  var selection = d3.select("#selDataset").node().value;
+  console.log(selection);
 
   // Use `.html("") to clear any existing metadata
-  panel.innerHTML = '';
+  selection.innerHTML = '';                  
+  
+  // var selection = d3.select("#selDataset").node().value;
+  // console.log(selection);
 
-  for(var key in data) {
+  var panel = d3.select("#sample-metadata").node();
+  console.log(panel);
+
+  var pythonSample = d3.json(`/metadata/${selection}`);  // I added the .node part, then dropped it.
+  console.log(pythonSample); 
+
+  // for(var key in pythonSample) {                 commenting out to try something else
+  //   h6tag = document.createElement("h6");        commenting out to try something else
+  //   h6Text = document.createTextNode(`${key}: ${pythonSample[key]}`);
+  //   panel.append("h6").text(h6Text);             commenting out to try something else
+  //   console.log(key);                            commenting out to try something else
+  //   // panel.append(h6tag);
+  Object.entries(panel).forEach(([key, value]) => {
     h6tag = document.createElement("h6");
-    h6Text = document.createTextNode(`${key}: ${data[key]}`);
-    h6tag.append(h6Text);
-
-    panel.appendChild(h6tag);
-  };
+    // h6Text = document.createTextNode(`${key}: ${pythonSample[key]}`);
+    panel.append("h6").text(h6Text);
+    // console.log(`${key} ${value}`);
+    // panel.append("h6").text(h6)
+  });
 
   var layout = {
     height: 600,
@@ -95,10 +101,22 @@ function init() {
   });
 }
 
+
+
 function optionChanged(newSample) {
+
+  var selection = d3.select("#selDataset").node().value;
+  console.log(selection);
+
+  var panel = d3.select("#sample-metadata").node();
+  console.log(panel);
+
+  var pythonSample = d3.json(`/metadata/${selection}`);  // I added the .node part, then dropped it.
+  console.log(pythonSample);  
+  
   // Fetch new data each time a new sample is selected
   buildCharts(newSample);
-  buildMetadata(newSample);
+  buildMetadata(panel);
 }
 
 // Initialize the dashboard

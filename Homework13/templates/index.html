@@ -26,11 +26,11 @@
         </div>
         <!-- the "stripped title" goes here -->
         <div class="row">
-            <h6>{{ mars_scrape_objects.strippedTitle }}.</h6>
+            <h6>{{ mars_scrape_objects.strippedTitle }}</h6>
         </div>
         <!-- the "strippedPar" goes here -->
         <div class="row">
-            <p> {{mars_scrape_objects.strippedPar}}. </p>
+            <p> {{mars_scrape_objects.strippedPar}} </p>
         </div>
     </div>
 
@@ -43,18 +43,25 @@
                     </div>
 
                     <div class="row">       <!-- This is where the Mars Featured Image will get linked in -->
-                             <img src="{{ mars_scrape_objects.final_final_image_url }}" style="width:234px;height:162px;">  
+                             <img src="{{ mars_scrape_objects.final_final_image_url }}" style="width:702px;height:486px;">  
                     </div>
                 </div>  
 
                 <div class="col-lg-4">
                     <div class="row">
-                         This is where the weather conditions go
+                        <h4>Current Weather on Mars</h4>
                     </div>
 
                     <div class="row">
-                         This is where the weather conditions go
+                        <h6>{{mars_scrape_objects.mars_weather}}</h6>
                     </div>
+
+                    <div class="row">
+                            <tr>
+                                <div w3-include-html="/marsFacts.html"></div>
+                            </tr>
+                    </div>
+
                 </div> 
         </div>
     </div>
@@ -66,21 +73,23 @@
 
         <div class="row"> <!--this is where the first of two rows will go-->
             <div class="col-lg-6">  <!--this is where the first of two columns in the first row goes-->
-                 <img src="Hemisphere1_placeholder.png" style="width:234px;height:162px;">
+                 <img src="{{ mars_scrape_objects.hemisphere1 }}" style="width:390px;height:388px;">
             </div>
 
             <div class="col-lg-6">  <!--this is where the second of two columns in the first row goes-->
-                 <img src="Hemisphere1_placeholder.png" style="width:234px;height:162px;">
+                 <img src="{{ mars_scrape_objects.hemisphere2 }}" style="width:390px;height:388px;">
             </div>
         </div>
 
+        <br>
+
         <div class="row">  <!--this is where the second of two rows will go-->
             <div class="col-lg-6">  <!--this is where the first of two columns in the first row goes-->
-                 <img src="Hemisphere1_placeholder.png" style="width:234px;height:162px;"> 
+                 <img src="{{ mars_scrape_objects.hemisphere3 }}" style="width:390px;height:388px;"> 
             </div>
 
             <div class="col-lg-6">  <!--this is where the second of two columns in the first row goes-->
-                 <img src="Hemisphere1_placeholder.png" style="width:234px;height:162px;"> 
+                 <img src="{{ mars_scrape_objects.hemisphere4 }}" style="width:390px;height:388px;"> 
             </div>
         </div>
     </div>
