@@ -13,25 +13,31 @@ function buildMetadata(newSample) {
   // var selection = d3.select("#selDataset").node().value;
   // console.log(selection);
 
-  var panel = d3.select("#sample-metadata").node();
+  var panel = d3.select("#sample-metadata");
   console.log(panel);
 
   var pythonSample = d3.json(`/metadata/${selection}`);  // I added the .node part, then dropped it.
   console.log(pythonSample); 
 
-  // for(var key in pythonSample) {                 commenting out to try something else
-  //   h6tag = document.createElement("h6");        commenting out to try something else
-  //   h6Text = document.createTextNode(`${key}: ${pythonSample[key]}`);
-  //   panel.append("h6").text(h6Text);             commenting out to try something else
-  //   console.log(key);                            commenting out to try something else
-  //   // panel.append(h6tag);
-  Object.entries(panel).forEach(([key, value]) => {
+  panel.then((data) => {
+  
+  // p.then(onFulfilled[, onRejected]);
+
+  // p.then((value) => {
+  //   // fulfillment
+  // }, (reason) => {
+  //   // rejection
+  // });
+
+  Object.entries(pythonSample).forEach(([key, value]) => {
     h6tag = document.createElement("h6");
     // h6Text = document.createTextNode(`${key}: ${pythonSample[key]}`);
     panel.append("h6").text(h6Text);
     // console.log(`${key} ${value}`);
     // panel.append("h6").text(h6)
   });
+
+});
 
   var layout = {
     height: 600,
@@ -116,7 +122,7 @@ function optionChanged(newSample) {
   
   // Fetch new data each time a new sample is selected
   buildCharts(newSample);
-  buildMetadata(panel);
+  buildMetadata(pythonSample);
 }
 
 // Initialize the dashboard

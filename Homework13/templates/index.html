@@ -14,8 +14,8 @@
         <div class="container">
             <h1 align="center" class="display-4">Mission to Mars</h1>
             
-            <div class="buttonHolder"> <!-- I've tried centering a button here, but either the "align-"center"" method won't work or the "style_sheet" link doesn't work when 2nd --> 
-                <a href="/scrape_mars"><input value="Placeholder Button" title="I'm Feeling Lucky" name="lucky" type="submit" id="btn_i"></a>
+            <div align="center" class="buttonHolder" align-items="center"> <!-- I've tried centering a button here, but either the "align-"center"" method won't work or the "style_sheet" link doesn't work when 2nd --> 
+                <a href="/scrape_mars"><input  value="Scrape New Data" title="I'm Feeling Lucky" name="lucky" type="submit" id="btn_i"></a>
             </div>
         </div>
     </div>
@@ -39,11 +39,11 @@
         <div class="row">
                 <div class="col-lg-8">
                     <div class="row"> <!-- The header for the large picture image -->
-                         <h2>Featured Mars Image</h2> 
+                        <h2>Featured Mars Image</h2> 
                     </div>
 
                     <div class="row">       <!-- This is where the Mars Featured Image will get linked in -->
-                             <img src="{{ mars_scrape_objects.final_final_image_url }}" style="width:702px;height:486px;">  
+                             <img src="{{ mars_scrape_objects.final_final_image_url }}" style="width:100%;height:100%">  
                     </div>
                 </div>  
 
@@ -56,11 +56,12 @@
                         <h6>{{mars_scrape_objects.mars_weather}}</h6>
                     </div>
 
-                    <div class="row">
-                            <tr>
-                                <div w3-include-html="/marsFacts.html"></div>
-                            </tr>
-                    </div>
+                    <div class="row" id="mars-facts">
+                        <div class="col-md-12">
+                          <h4>Mars Facts</h4>
+                          {{mars_scrape_objects.facts | safe}}
+                        </div>
+                      </div>
 
                 </div> 
         </div>
@@ -68,7 +69,7 @@
      <!-- This is the next/final row with the header and 2x2 grid with four larger images -->
     <div class="container"> 
         <div class="row">
-             <h2 align="center" >Mars Hemispheres</h2> <!--Another example of not being able to get the "align="center"" to work-->
+             <h2 align="center">Mars Hemispheres</h2> <!--Another example of not being able to get the "align="center"" to work-->
         </div>
 
         <div class="row"> <!--this is where the first of two rows will go-->

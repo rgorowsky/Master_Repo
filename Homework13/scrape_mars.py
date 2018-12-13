@@ -130,27 +130,17 @@ def scrape():
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
 
-
     # In[17]:
-
-
     table = soup.find('div')
 
     # find the rows within the table
     rows = table.find_all('tr')
-
-    rows
-
+    # rows
 
     # In[18]:
-
-
     type(rows)
 
-
     # In[19]:
-
-
     # find the tds elements within the rows and print out the rows and row values
     facts = []
     values = []
@@ -164,28 +154,38 @@ def scrape():
         
     #     print(fact)
     #     print(value)
-
-    print(facts)
-    print(values)
-
+    # print(facts)
+    # print(values)
 
     # In[20]:
-
-
     # I have two lists, put those into a dataframe
     marsFactsTable = pd.DataFrame({
         'facts': facts,
         'values': values
     })
-
-    marsFactsTable
-
+    # marsFactsTable
 
     # In[21]:
-
-
     # read the table into an HTML table
-    marsFactsTable.to_html("marsFacts.html")
+    # marsFactsTable.to_html("marsFacts.html")  # commented out to try the method with ABe 12/9
+
+    # marsFactsTable = pd.DataFrame({           # commented out to try the method with ABe 12/9
+    # 'facts': facts,                           # commented out to try the method with ABe 12/9
+    # 'values': values                          # commented out to try the method with ABe 12/9
+    # })                                        # commented out to try the method with ABe 12/9
+
+    url4 = 'https://space-facts.com/mars/'
+    # browser.visit(url4)
+
+    marsFactsTable.columns = ['description', 'value']
+    marsFactsTable.set_index('description', inplace=True)
+
+    table = marsFactsTable.to_html()
+    table = table.replace('\n', '')
+
+    mars_scrape_objects['facts'] = table
+
+    #print(table)
 
 
     # In[30]:
