@@ -15,9 +15,9 @@ L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 // Define a markerSize function that will give each city a different radius based on its population
 // THIS IS PULLED FROM A PREVIOUS EXAMPLE - LEAVING IT IN FOR NOW 'CUZ IT'S AN EXAMPLE OF MANIPULATING
 // THE MARKER SIZE BASED ON POPULATION - WANT TO CHANGE IT TO MAGNITUDE EVENTUALLY
-// function markerSize(population) {
-//   return population / 40;
-// }
+function markerSize(magnitude) {
+  return magnitude / 4;
+}
 
 // Perform an API call to the USGS 'all' earthquakes geoJSON point
 d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson", function(earthquakes) {
@@ -37,6 +37,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojs
       // HERE IS WHERE WE PUT THE FUNCTION TO PUT THE LAT/LONG ON MAP
     var newMarker = L.circle([long, lat], {
       color: "purple",
+      radius: markerSize(magnitude)
       });
       
       // add the new marker to the map / layer
@@ -45,7 +46,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojs
  
   });
 
-  // // LOOKING AT MAGNITUDE, IF CONDITIONS FOR COLOR
+  // LOOKING AT MAGNITUDE, IF CONDITIONS FOR COLOR
   // if (!magnitude < 1) {
   //   //this is where I'll input that the color of the circle is YELLOW
   //   //don't forget semicolon ";"
