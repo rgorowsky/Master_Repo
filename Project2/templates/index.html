@@ -1,0 +1,99 @@
+<!--  -->  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Landing Page</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" type="css" href="style_sheet.css">
+  
+</head>
+<body>
+    <!-- Here is where the title jumbotron and "scrape" action button will go -->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 align="center" class="display-4">Mission to Mars</h1>
+            
+            <div align="center" class="buttonHolder" align-items="center"> <!-- I've tried centering a button here, but either the "align-"center"" method won't work or the "style_sheet" link doesn't work when 2nd --> 
+                <a href="/scrape_mars"><input  value="Scrape New Data" title="I'm Feeling Lucky" name="lucky" type="submit" id="btn_i"></a>
+            </div>
+        </div>
+    </div>
+    <!-- This is where the first scrape item goes -->
+    <div class="container">
+        <div class="row">
+            <h4>Latest Mars News</h4>
+        </div>
+        <!-- the "stripped title" goes here -->
+        <div class="row">
+            <h6>{{ mars_scrape_objects.strippedTitle }}</h6>
+        </div>
+        <!-- the "strippedPar" goes here -->
+        <div class="row">
+            <p> {{mars_scrape_objects.strippedPar}} </p>
+        </div>
+    </div>
+
+    <!-- This is where I will put in the next row, containing two columns, with two rows each (header, Large image) and (weather, mars facts table) -->
+    <div class="container">
+        <div class="row">
+                <div class="col-lg-8">
+                    <div class="row"> <!-- The header for the large picture image -->
+                        <h2>Featured Mars Image</h2> 
+                    </div>
+
+                    <div class="row">       <!-- This is where the Mars Featured Image will get linked in -->
+                             <img src="{{ mars_scrape_objects.final_final_image_url }}" style="width:100%;height:100%">  
+                    </div>
+                </div>  
+
+                <div class="col-lg-4">
+                    <div class="row">
+                        <h4>Current Weather on Mars</h4>
+                    </div>
+
+                    <div class="row">
+                        <h6>{{mars_scrape_objects.mars_weather}}</h6>
+                    </div>
+
+                    <div class="row" id="mars-facts">
+                        <div class="col-md-12">
+                          <h4>Mars Facts</h4>
+                          {{mars_scrape_objects.facts | safe}}
+                        </div>
+                      </div>
+
+                </div> 
+        </div>
+    </div>
+     <!-- This is the next/final row with the header and 2x2 grid with four larger images -->
+    <div class="container"> 
+        <div class="row">
+             <h2 align="center">Mars Hemispheres</h2> <!--Another example of not being able to get the "align="center"" to work-->
+        </div>
+
+        <div class="row"> <!--this is where the first of two rows will go-->
+            <div class="col-lg-6">  <!--this is where the first of two columns in the first row goes-->
+                 <img src="{{ mars_scrape_objects.hemisphere1 }}" style="width:390px;height:388px;">
+            </div>
+
+            <div class="col-lg-6">  <!--this is where the second of two columns in the first row goes-->
+                 <img src="{{ mars_scrape_objects.hemisphere2 }}" style="width:390px;height:388px;">
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">  <!--this is where the second of two rows will go-->
+            <div class="col-lg-6">  <!--this is where the first of two columns in the first row goes-->
+                 <img src="{{ mars_scrape_objects.hemisphere3 }}" style="width:390px;height:388px;"> 
+            </div>
+
+            <div class="col-lg-6">  <!--this is where the second of two columns in the first row goes-->
+                 <img src="{{ mars_scrape_objects.hemisphere4 }}" style="width:390px;height:388px;"> 
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
