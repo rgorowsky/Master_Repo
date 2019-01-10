@@ -14,7 +14,7 @@ function buildMetadata(newSample) {
   // console.log(selection);
 
   var panel = d3.select("#sample-metadata");
-  console.log(panel);
+  console.log(pythonSample);
 
   var pythonSample = d3.json(`/metadata/${selection}`);  // I added the .node part, then dropped it.
   console.log(pythonSample); 
